@@ -1,14 +1,24 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  @ViewChild("usernameInput") mUsername;
+  @ViewChild("passwordInput") mPassword;
+  constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController) {
 
-  constructor(public navCtrl: NavController) {
-
+  }
+  onClickLoginBtn(){
+    // alert(""+this.mUsername.value+"|"+this.mPassword.value);
+    this.alertCtrl.create({
+      title:"Result",
+      subTitle:this.mUsername.value+"|"+this.mPassword.value,
+      buttons:['OK']
+    }).present();
   }
 
 }
